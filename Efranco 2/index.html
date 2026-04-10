@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zona Franca Chat</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Overlay para cerrar el chat al hacer clic fuera -->
+    <div id="embed-overlay"></div>
+
+    <!-- Contenedor del chat -->
+    <div id="embed-container">
+        <iframe id="embed-floating-iframe" src="https://staging-app.clona.co/chat/f6a7fb85-f6b9-44c5-b026-2005e39d2287"
+            allow="microphone" allowfullscreen title="Chat clona"></iframe>
+    </div>
+
+    <!-- Botón flotante para abrir/cerrar -->
+    <button id="embed-toggle-button" aria-label="Abrir chat"></button>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
