@@ -1,19 +1,17 @@
 const overlay = document.getElementById('embed-overlay');
 const container = document.getElementById('embed-container');
-const button = document.getElementById('embed-toggle-button');
+const bubble = document.getElementById('welcome-bubble');
 
 function openChat() {
     container.classList.add('active');
     overlay.classList.add('active');
-    button.classList.add('open');
-    button.setAttribute('aria-label', 'Cerrar chat');
+    bubble.classList.add('hidden');
 }
 
 function closeChat() {
     container.classList.remove('active');
     overlay.classList.remove('active');
-    button.classList.remove('open');
-    button.setAttribute('aria-label', 'Abrir chat');
+    bubble.classList.remove('hidden');
 }
 
 function toggleChat() {
@@ -24,5 +22,6 @@ function toggleChat() {
     }
 }
 
-button.addEventListener('click', toggleChat);
+bubble.addEventListener('click', toggleChat);
 overlay.addEventListener('click', closeChat);
+

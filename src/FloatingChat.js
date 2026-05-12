@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import WelcomeBubble from './components/WelcomeBubble';
 
 const FloatingChat = () => {
   const [isOpen, setIsOpen] = useState(false);
   const chatUrl = "https://staging-app.clona.co/chat/f6a7fb85-f6b9-44c5-b026-2005e39d2287";
-
   const toggleChat = () => setIsOpen(!isOpen);
   const closeChat = () => setIsOpen(false);
 
@@ -48,6 +48,7 @@ const FloatingChat = () => {
           src={chatUrl}
           allow="microphone"
           allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
           style={{ width: '100%', height: '100%', border: 'none' }}
           title="Chat clona"
         />
@@ -62,33 +63,11 @@ const FloatingChat = () => {
         >
         </div>
       </div>
-      <button
-        id="embed-toggle-button"
-        onClick={toggleChat}
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          backgroundImage: isOpen
-            ? 'url("https://zcbdgpiohdtlvmvcpemu.supabase.co/storage/v1/object/public/static/assets/images/icon-clona-avatar-opened.png")'
-            : 'url("https://zcbdgpiohdtlvmvcpemu.supabase.co/storage/v1/object/public/static/assets/images/icon-clona-avatar-closed.png")',
-          backgroundColor: '#0a4010ff',
-          backgroundSize: isOpen ? '45%' : '65%',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          border: 'none',
-          borderRadius: '50%',
-          width: '46px',
-          height: '46px',
-          cursor: 'pointer',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)',
-          zIndex: 1001,
-          padding: 0,
-          transition: 'all 0.3s'
-        }}
-      />
+      {!isOpen && <WelcomeBubble onClick={toggleChat} />}
     </>
   );
 };
+
+
 
 export default FloatingChat;
