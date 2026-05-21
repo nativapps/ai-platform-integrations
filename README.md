@@ -11,17 +11,13 @@ El proyecto está dividido en dos carpetas principales, adaptadas para diferente
 ```text
 Efranco 4/
 ├── 📁 Simplex Html/        # Solución rápida para sitios web estáticos (HTML puro)
-│   ├── 📁 assets/
-│   │   └── Chatbot.png     # Imagen del avatar de Frankie
-│   └── index.html          # Código de referencia con la integración
+│   └── index.html          # Código de referencia con la integración (con avatar vía URL fija)
 │
 └── 📁 React App/           # Proyecto basado en React (CRA) para aplicaciones modernas
     ├── 📁 public/
     ├── 📁 src/
-    │   ├── 📁 assets/
-    │   │   └── Chatbot.png  # Avatar de Frankie utilizado en la app
     │   ├── 📁 components/
-    │   │   └── WelcomeBubble.js # Burbuja flotante de bienvenida
+    │   │   └── WelcomeBubble.js # Burbuja flotante de bienvenida (con avatar vía URL fija)
     │   ├── App.css         # Estilos y animaciones (slideIn, bounce)
     │   ├── App.js          # Componente principal
     │   ├── FloatingChat.js # Contenedor del chat con Iframe y overlay
@@ -30,6 +26,7 @@ Efranco 4/
     └── package.json        # Dependencias y scripts de ejecución
 ```
 
+
 ---
 
 ## 🌐 1. Simplex Html (Integración en HTML Estático)
@@ -37,28 +34,16 @@ Efranco 4/
 Esta carpeta contiene una implementación directa mediante un bloque de código estructurado en CSS, HTML y JavaScript.
 ### 📋 ¿Qué contiene?
 *   **`index.html`**: Un archivo de ejemplo donde se incluye toda la estructura visual del chat, las animaciones fluidas de la burbuja y la lógica de apertura/cierre.
-*   **`assets/Chatbot.png`**: La imagen que representa al asistente virtual Frankie dentro del círculo flotante.
 
 ### 🛠️ ¿Cómo integrarlo en tu proyecto?
 
-Sigue estos tres sencillos pasos para incorporar el chat en tu propio sitio web:
+Para incorporar el chat en tu propio sitio web, solo debes seguir este paso:
 
-#### **Paso 1: Descargar y configurar la imagen del Avatar**
-1. Copia o descarga la imagen `Chatbot.png` ubicada en la carpeta `Simplex Html/assets/`.
-2. Colócala en la carpeta de recursos o assets de tu propio proyecto web (por ejemplo, `assets/images/` o `img/`).
+#### **Copiar el bloque de código HTML, CSS y JS**
+Copia el bloque de código completo contenido en `index.html` y pégalo **justo antes del cierre de la etiqueta `</body>`** en tu archivo HTML principal.
 
-#### **Paso 2: Copiar el bloque de código HTML, CSS y JS**
-Copia el bloque de código completo y pégalo **justo antes del cierre de la etiqueta `</body>`** en tu archivo HTML principal:
-
-
-
-
-#### **Paso 3: Apuntar la ruta de la imagen directamente**
-Asegúrate de editar la línea de la etiqueta `<img>` en el código copiado:
-```html
-<img src="LA_RUTA_DE_TU_IMAGEN/Chatbot.png" alt="Frankie Avatar" class="frankie-avatar">
-```
-Reemplaza `assets/Chatbot.png` por la ruta absoluta o relativa correcta de tu servidor (por ejemplo, `/assets/images/Chatbot.png` o `https://tudominio.com/assets/Chatbot.png`), para asegurar que el avatar de Frankie cargue correctamente en todas las páginas.
+> [!NOTE]
+> **No requieres configurar ni descargar ninguna imagen para el avatar.** Frankie ya viene configurado por defecto con una URL pública y fija en Supabase (`https://zcbdgpiohdtlvmvcpemu.supabase.co/storage/v1/object/public/static/assets/images/Chatbot-Efranco.png`) integrada directamente en el archivo, por lo que cargará de forma automática sin necesidad de almacenar recursos adicionales localmente.
 
 ---
 
@@ -103,9 +88,8 @@ La aplicación está diseñada de forma modular bajo las mejores prácticas de R
     *   Maneja eventos de clic tanto en la burbuja como en el fondo invisible para alternar de forma segura entre los estados abierto/cerrado.
 *   **`src/components/WelcomeBubble.js`**: Componente de presentación para la burbuja flotante del asistente.
     *   Recibe una prop `onClick` que se dispara al pulsar la burbuja para activar el chat.
-    *   Importa de manera nativa la imagen de Frankie (`Chatbot.png`) para mostrarla en formato redondo.
+    *   Utiliza directamente la URL pública fija del avatar de Frankie en Supabase para mostrarla en formato redondo, eliminando la necesidad de almacenar o configurar una imagen local.
     *   Renderiza el título animado `"¡Hola! Soy Frankie"` y el subtítulo `"Tu asistente Virtual 24/7"`.
-*   **`src/assets/Chatbot.png`**: Archivo de imagen del avatar Frankie, optimizado para uso digital e importado directamente en el componente `WelcomeBubble.js`.
 *   **`src/App.css`**: Contiene todo el sistema de diseño visual de la interfaz. Esto incluye:
     *   El diseño degradado azul degradado de la burbuja flotante (`#0076b6` a `#00a1e4`).
     *   La sombra difuminada y bordes redondeados modernos para una apariencia premium.
