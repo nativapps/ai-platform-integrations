@@ -6,44 +6,40 @@ Este repositorio contiene dos alternativas de integración del chat interactivo 
 
 ## 📁 Estructura del Repositorio
 
-El proyecto está dividido en dos carpetas principales, adaptadas para diferentes necesidades de desarrollo:
+El proyecto está dividido en carpetas adaptadas para diferentes necesidades de integración:
 
 ```text
 Efranco 4/
-├── 📁 Simplex Html/        # Solución rápida para sitios web estáticos (HTML puro)
-│   └── index.html          # Código de referencia con la integración (con avatar vía URL fija)
+├── 📁 Simplex Html/        
+│   └── embed-chat.js       # Script auto-contenido 
 │
-└── 📁 React App/           # Proyecto basado en React (CRA) para aplicaciones modernas
+├── 📁 Embed Chat Floating/ 
+│   └── chat.js             # Script auto-contenido 
+│
+└── 📁 React App/           
     ├── 📁 public/
     ├── 📁 src/
     │   ├── 📁 components/
-    │   │   └── WelcomeBubble.js # Burbuja flotante de bienvenida (con avatar vía URL fija)
-    │   ├── App.css         # Estilos y animaciones (slideIn, bounce)
+    │   │   └── WelcomeBubble.js # Burbuja flotante de bienvenida 
+    │   ├── App.css         # Estilos y animaciones 
     │   ├── App.js          # Componente principal
-    │   ├── FloatingChat.js # Contenedor del chat con Iframe y overlay
+    │   ├── FloatingChat.js # Contenedor del chat 
     │   └── index.js
-    ├── .env                # Configuración de variables de entorno
-    └── package.json        # Dependencias y scripts de ejecución
 ```
-
 
 ---
 
-## 🌐 1. Simplex Html (Integración en HTML Estático)
+## 🌐 1. Integración Directa (HTML Estático / Script Tag)
 
-Esta carpeta contiene una implementación directa mediante un bloque de código estructurado en CSS, HTML y JavaScript.
-### 📋 ¿Qué contiene?
-*   **`index.html`**: Un archivo de ejemplo donde se incluye toda la estructura visual del chat, las animaciones fluidas de la burbuja y la lógica de apertura/cierre.
+Esta es la forma más fácil y rápida de integrar al asistente virtual **Frankie**. Consiste en un script auto-contenido que inyecta dinámicamente todo el HTML, estilos CSS y comportamiento interactivo.
 
-### 🛠️ ¿Cómo integrarlo en tu proyecto?
+### 📋 ¿Cómo integrarlo en tu proyecto?
 
-Para incorporar el chat en tu propio sitio web, solo debes seguir este paso:
+Para incorporar el chat en cualquier sitio web (HTML estático, WordPress, Shopify, Webflow, etc.), **solo debes copiar el  script y pegarlo en la última línea, justo antes de que se cierre la etiqueta `</body>`** de tu archivo HTML principal:
 
-#### **Copiar el bloque de código HTML, CSS y JS**
-Copia el bloque de código completo contenido en `index.html` y pégalo **justo antes del cierre de la etiqueta `</body>`** en tu archivo HTML principal.
 
 > [!NOTE]
-> **No requieres configurar ni descargar ninguna imagen para el avatar.** Frankie ya viene configurado por defecto con una URL pública y fija en Supabase (`https://zcbdgpiohdtlvmvcpemu.supabase.co/storage/v1/object/public/static/assets/images/Chatbot-Efranco.png`) integrada directamente en el archivo, por lo que cargará de forma automática sin necesidad de almacenar recursos adicionales localmente.
+> **No requieres configurar ni descargar ninguna imagen para el avatar.** Frankie y el Logo de Zona Franca ya vienen preconfigurados con URLs fijas y públicas en Supabase, por lo que cargarán de forma automática sin necesidad de almacenar recursos adicionales localmente.
 
 ---
 
@@ -99,5 +95,5 @@ La aplicación está diseñada de forma modular bajo las mejores prácticas de R
 
 ---
 
-¡Listo! Con estas dos opciones puedes integrar rápida y profesionalmente al asistente virtual Frankie en cualquier plataforma web. Si tienes dudas o quieres ajustar las animaciones, revisa los archivos de estilo `index.html` en la versión HTML estática o `App.css` en la versión de React.
+¡Listo! Con estas opciones puedes integrar de forma rápida y profesional al asistente virtual Frankie en cualquier plataforma web. Si tienes dudas o quieres ajustar la estructura o las animaciones, revisa el archivo de script `embed-chat.js` / `chat.js` en la versión de integración directa, o el archivo `App.css` en la versión de React.
 
