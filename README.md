@@ -9,14 +9,15 @@ Este repositorio contiene dos alternativas de integración del chat interactivo 
 El proyecto está dividido en carpetas adaptadas para diferentes necesidades de integración:
 
 ```text
-Efranco 4/
-├── 📁 Simplex Html/        
-│   └── embed-chat.js       # Script auto-contenido 
+Efranco /
+├── 📁 Simplex Html/ #Efranco 2       
+│   └── embed-chat.js       # Script auto-contenido
+│   ├── embed-chatQA.js 
 │
 ├── 📁 Embed Chat Floating/ 
 │   └── chat.js             # Script auto-contenido 
 │
-└── 📁 React App/           
+└── 📁 React App/  #Efranco 4    
     ├── 📁 public/
     ├── 📁 src/
     │   ├── 📁 components/
