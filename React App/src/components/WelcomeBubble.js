@@ -5,11 +5,11 @@ const WelcomeBubble = ({ onClick }) => {
   return (
     <div className="welcome-bubble-container" onClick={onClick}>
       <div className="avatar-wrapper">
-        <img src="https://zcbdgpiohdtlvmvcpemu.supabase.co/storage/v1/object/public/static/assets/images/Chatbot-Efranco.png" alt="Frankie Avatar" className="frankie-avatar" />
+        <img src="https://wedazpyhxkeengebyggo.supabase.co/storage/v1/object/public/asssets/frankie%20avatar%20-%20zf.png" alt="Frankie Avatar" className="frankie-avatar" />
       </div>
       <div className="bubble-content">
-        <h3 className="bubble-title">¡Hola! Soy Frankie</h3>
-        <p className="bubble-subtitle">Su asistente Virtual 24/7</p>
+        <h3 className="bubble-title">Hola, soy Frankie</h3>
+        <p className="bubble-subtitle">¿En qué te puedo ayudar?</p>
       </div>
     </div>
   );
