@@ -94,7 +94,7 @@
   z-index: 2147483647;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   cursor: pointer;
   animation: slideIn 0.3s ease-out;
   transition: transform 0.2s ease;
@@ -108,6 +108,7 @@
   width: 62px;
   height: 62px;
   border-radius: 50%;
+  margin-top: -20px;
   object-fit: cover;
   border: 2.5px solid rgba(136, 221, 255, 0.8);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
@@ -115,15 +116,15 @@
 }
 
 .bubble-minimized-arrow {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   background: rgba(20, 20, 20, 0.72);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 

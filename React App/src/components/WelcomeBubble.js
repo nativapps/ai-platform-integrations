@@ -8,8 +8,8 @@ const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
   if (isMinimized) {
     return (
       <div className="bubble-minimized" onClick={onExpand} title="Expandir Frankie">
+        <span className="bubble-minimized-arrow">▶</span>
         <img src={AVATAR_URL} alt="Frankie" className="bubble-minimized-avatar" />
-        <span className="bubble-minimized-arrow">◀</span>
       </div>
     );
   }
