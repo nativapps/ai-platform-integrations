@@ -38,22 +38,93 @@
   }
 }
 
-.welcome-bubble-container {
+/* Expanded bot image — wrapper handles fixed positioning */
+.bubble-expanded-wrapper {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 350px;
+  z-index: 2147483647;
+  animation: slideIn 0.5s ease-out, bounce 3s infinite ease-in-out;
+}
+
+.welcome-bubble-container {
+  width: 250px;
   height: auto;
   display: block;
   cursor: pointer;
-  z-index: 2147483647;
-  animation: slideIn 0.5s ease-out, bounce 3s infinite ease-in-out;
-  transition: transform 0.2s ease;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+  transition: transform 0.2s ease;
 }
 
 .welcome-bubble-container:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
+}
+
+/* Small ◀ button on the left edge to collapse */
+.bubble-collapse-btn {
+  position: absolute;
+  left: -13px;
+  bottom: 45px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(30, 30, 30, 0.62);
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  transition: background 0.2s, transform 0.15s;
+  z-index: 1;
+}
+
+.bubble-collapse-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.15);
+}
+
+/* Minimized state: avatar circle + ▶ arrow */
+.bubble-minimized {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  animation: slideIn 0.3s ease-out;
+  transition: transform 0.2s ease;
+}
+
+.bubble-minimized:hover {
+  transform: scale(1.06);
+}
+
+.bubble-minimized-avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid rgba(136, 221, 255, 0.8);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  background: white;
+}
+
+.bubble-minimized-arrow {
+  width: 30px;
+  height: 30px;
+  background: rgba(20, 20, 20, 0.72);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
 @keyframes slideIn {
@@ -74,7 +145,10 @@
 
 @media (max-width: 480px) {
   .welcome-bubble-container {
+    width: 300px;
+  }
+  .bubble-expanded-wrapper,
+  .bubble-minimized {
     right: 10px;
-    width: 130px;
   }
 }

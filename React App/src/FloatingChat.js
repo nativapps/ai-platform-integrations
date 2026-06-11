@@ -3,6 +3,7 @@ import WelcomeBubble from './components/WelcomeBubble';
 
 const FloatingChat = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
   const chatUrl = "https://staging-app.clona.co/chat/f6a7fb85-f6b9-44c5-b026-2005e39d2287";
   const toggleChat = () => setIsOpen(!isOpen);
   const closeChat = () => setIsOpen(false);
@@ -89,7 +90,14 @@ const FloatingChat = () => {
           </div>
         </div>
       )}
-      {!isOpen && <WelcomeBubble onClick={toggleChat} />}
+      {!isOpen && (
+        <WelcomeBubble
+          onClick={toggleChat}
+          isMinimized={isMinimized}
+          onMinimize={() => setIsMinimized(true)}
+          onExpand={() => setIsMinimized(false)}
+        />
+      )}
     </>
   );
 };
