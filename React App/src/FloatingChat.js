@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WelcomeBubble from './components/WelcomeBubble';
 
 const FloatingChat = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isOpen, setIsOpen] = useState(() => localStorage.getItem('frankie-chat-open') === 'true');
+  const [isMinimized, setIsMinimized] = useState(() => localStorage.getItem('frankie-minimized') === 'true');
   const chatUrl = "https://staging-app.clona.co/chat/f6a7fb85-f6b9-44c5-b026-2005e39d2287";
   const toggleChat = () => setIsOpen(!isOpen);
   const closeChat = () => setIsOpen(false);
+  useEffect(() => { localStorage.setItem('frankie-chat-open', String(isOpen)); }, [isOpen]);
+  useEffect(() => { localStorage.setItem('frankie-minimized', String(isMinimized)); }, [isMinimized]);
 
   return (
     <>
