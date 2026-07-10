@@ -7,10 +7,19 @@ const BOT_URL = 'https://wedazpyhxkeengebyggo.supabase.co/storage/v1/object/publ
 const DRAG_THRESHOLD = 5;
 
 const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
-  const [pos, setPos] = useState(null);
+  const [pos, setPos] = useState(() => {
+    const saved = localStorage.getItem('frankie-pos');
+    return saved ? JSON.parse(saved) : null;
+  });
   const drag = useRef({ active: false, moved: false, startX: 0, startY: 0, elemLeft: 0, elemTop: 0 });
   const wrapperRef = useRef(null);
   const justDragged = useRef(false);
+
+  useEffect(() => {
+    if (pos) {
+      localStorage.setItem('frankie-pos', JSON.stringify(pos));
+    }
+  }, [pos]);
 
   useEffect(() => {
     const elem = wrapperRef.current;
