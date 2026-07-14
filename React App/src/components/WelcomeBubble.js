@@ -5,6 +5,11 @@ const AVATAR_URL = 'https://wedazpyhxkeengebyggo.supabase.co/storage/v1/object/p
 const BOT_URL = 'https://wedazpyhxkeengebyggo.supabase.co/storage/v1/object/public/asssets/frankie%20bot%20-%20zf.png';
 
 const DRAG_THRESHOLD = 5;
+const MOVE_ICON_URL = 'https://zcbdgpiohdtlvmvcpemu.supabase.co/storage/v1/object/public/static/assets/images/images.png';
+
+const MoveArrowsIcon = () => (
+  <img src={MOVE_ICON_URL} alt="Mover" className="move-arrows-icon" draggable={false} />
+);
 
 const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
   const [pos, setPos] = useState(() => {
@@ -72,6 +77,9 @@ const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
         onClick={() => { if (!justDragged.current) onExpand(); }}
         title="Expandir Frankie"
       >
+        <span className="hand-move-indicator" title="Mover">
+          <MoveArrowsIcon />
+        </span>
         <span className="bubble-minimized-arrow">▶</span>
         <img src={AVATAR_URL} alt="Frankie" className="bubble-minimized-avatar" draggable={false} />
       </div>
@@ -80,6 +88,9 @@ const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
 
   return (
     <div ref={wrapperRef} className="bubble-expanded-wrapper" style={posStyle}>
+      <span className="hand-move-indicator-expanded" title="Mover">
+        <MoveArrowsIcon />
+      </span>
       <button
         className="bubble-collapse-btn"
         onClick={(e) => { if (justDragged.current) return; e.stopPropagation(); onMinimize(); }}
