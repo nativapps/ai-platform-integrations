@@ -30,11 +30,12 @@ const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
     const elem = wrapperRef.current;
     if (!elem) return;
 
-    const handleMouseDown = (e) => {
-      if (e.button !== 0) return;
+    const handlePointerDown = (e) => {
+      if (e.button !== undefined && e.button !== 0) return;
       e.preventDefault();
       const rect = elem.getBoundingClientRect();
       drag.current = { active: true, moved: false, startX: e.clientX, startY: e.clientY, elemLeft: rect.left, elemTop: rect.top };
+      elem.setPointerCapture(e.pointerId);
 
       const onMove = (ev) => {
         if (!drag.current.active) return;
@@ -48,22 +49,25 @@ const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
         });
       };
 
-      const onUp = () => {
+      const onUp = (ev) => {
         drag.current.active = false;
         if (drag.current.moved) {
           justDragged.current = true;
           setTimeout(() => { justDragged.current = false; }, 0);
         }
-        window.removeEventListener('mousemove', onMove);
-        window.removeEventListener('mouseup', onUp);
+        elem.releasePointerCapture(ev.pointerId);
+        elem.removeEventListener('pointermove', onMove);
+        elem.removeEventListener('pointerup', onUp);
+        elem.removeEventListener('pointercancel', onUp);
       };
 
-      window.addEventListener('mousemove', onMove);
-      window.addEventListener('mouseup', onUp);
+      elem.addEventListener('pointermove', onMove);
+      elem.addEventListener('pointerup', onUp);
+      elem.addEventListener('pointercancel', onUp);
     };
 
-    elem.addEventListener('mousedown', handleMouseDown, { passive: false });
-    return () => elem.removeEventListener('mousedown', handleMouseDown);
+    elem.addEventListener('pointerdown', handlePointerDown, { passive: false });
+    return () => elem.removeEventListener('pointerdown', handlePointerDown);
   }, [isMinimized]);
 
   const posStyle = pos ? { left: pos.left, top: pos.top, bottom: 'auto', right: 'auto' } : {};
