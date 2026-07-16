@@ -32,10 +32,8 @@ const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
 
     const handlePointerDown = (e) => {
       if (e.button !== undefined && e.button !== 0) return;
-      e.preventDefault();
       const rect = elem.getBoundingClientRect();
       drag.current = { active: true, moved: false, startX: e.clientX, startY: e.clientY, elemLeft: rect.left, elemTop: rect.top };
-      elem.setPointerCapture(e.pointerId);
 
       const onMove = (ev) => {
         if (!drag.current.active) return;
@@ -49,24 +47,23 @@ const WelcomeBubble = ({ onClick, isMinimized, onMinimize, onExpand }) => {
         });
       };
 
-      const onUp = (ev) => {
+      const onUp = () => {
         drag.current.active = false;
         if (drag.current.moved) {
           justDragged.current = true;
           setTimeout(() => { justDragged.current = false; }, 0);
         }
-        elem.releasePointerCapture(ev.pointerId);
-        elem.removeEventListener('pointermove', onMove);
-        elem.removeEventListener('pointerup', onUp);
-        elem.removeEventListener('pointercancel', onUp);
+        window.removeEventListener('pointermove', onMove);
+        window.removeEventListener('pointerup', onUp);
+        window.removeEventListener('pointercancel', onUp);
       };
 
-      elem.addEventListener('pointermove', onMove);
-      elem.addEventListener('pointerup', onUp);
-      elem.addEventListener('pointercancel', onUp);
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
     };
 
-    elem.addEventListener('pointerdown', handlePointerDown, { passive: false });
+    elem.addEventListener('pointerdown', handlePointerDown, { passive: true });
     return () => elem.removeEventListener('pointerdown', handlePointerDown);
   }, [isMinimized]);
 
